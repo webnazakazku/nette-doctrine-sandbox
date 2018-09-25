@@ -1,0 +1,17 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+
+services:
+	authenticator: App\Model\Security\Authenticator
+	- App\Facades\UserFacade
+
+	- App\Forms\FormFactory
+	- App\Forms\SignInFormFactory
+
+	router: App\RouterFactory::createRouter
+
+console:
+	commands:
+		- App\Commands\CreateUser

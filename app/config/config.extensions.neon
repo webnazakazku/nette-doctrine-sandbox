@@ -1,0 +1,21 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+
+extensions:
+	# add theese four lines
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+
+migrations:
+	dir: %appDir%/migrations # migrations base directory
+	driver: mysql   # pgsql or mysql
+	dbal: doctrine  # nextras, nette, doctrine or dibi
+
+decorator:
+	Symfony\Component\Console\Command\Command:
+		tags: [kdyby.console.command]
