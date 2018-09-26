@@ -1,2 +1,2 @@
 INSERT INTO `users` (`id`, `email`, `password`, `name`) VALUES
-(0, 'test@example.com', '$2y$10$k2A422Vbs14Y7SrXO39bqe01j292ZVpCXNfLpR.3mhrU0Rl9bmTGe', 'user');
+(1, 'user@example.com', '$2y$10$JAGYxgIQJINSCSViSQ/hf.55p3U.I6qQTeqiraWQkRvw4VYChdeBG', 'user');

@@ -48,9 +48,9 @@ class Authenticator implements IAuthenticator
 
 		if (!$user) {
 			throw new AuthenticationException('Invalid credentials.', self::IDENTITY_NOT_FOUND);
-		} elseif (!Passwords::verify($password, $user->password)) {
+		} elseif (!Passwords::verify($password, $user->getPassword())) {
 			throw new AuthenticationException('Invalid credentials.', self::INVALID_CREDENTIAL);
-		} elseif (Passwords::needsRehash($user->password)) {
+		} elseif (Passwords::needsRehash($user->getPassword())) {
 			$user->setPassword($password);
 			$this->em->flush();
 		}
