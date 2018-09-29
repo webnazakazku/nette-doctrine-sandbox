@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Facades;
+namespace App\Model\User\Facades;
 
 use Kdyby\Doctrine\EntityManager;
 use Kdyby\Doctrine\EntityRepository;
-use App\Model\Entities\User;
+use Nette;
+use App\Model\User\Entities\User;
 
 class UserFacade
 {
@@ -25,22 +26,26 @@ class UserFacade
 	}
 
 	/**
-	 * @param $email
-	 * @param $password
-	 * @param string $name
+	 * @param Nette\Utils\ArrayHash $values
 	 *
 	 * @return User
 	 */
-	public function add($email, $password, $name = 'Anonymous')
+	public function add($values)
 	{
 		$user = new User;
-		$user->setEmail($email);
-		$user->setPassword($password);
-		$user->setName($name);
+
+		$user->setName($values->name);
+		$user->setEmail($values->email);
+		$user->setPassword($values->password);
 
 		$this->em->persist($user);
 		$this->em->flush();
 
 		return $user;
+	}
+
+	public function findUserBy($criteria)
+	{
+		return $this->users->findBy($criteria);
 	}
 }

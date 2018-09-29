@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Entities;
+namespace App\Model\User\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
 use Nette\Security\IIdentity;
@@ -23,6 +23,11 @@ class User implements IIdentity
 	/**
 	 * @ORM\Column(type="string")
 	 */
+	private $name;
+
+	/**
+	 * @ORM\Column(type="string")
+	 */
 	private $email;
 
 	/**
@@ -31,16 +36,27 @@ class User implements IIdentity
 	private $password;
 
 	/**
-	 * @ORM\Column(type="string")
-	 */
-	private $name;
-
-	/**
 	 * @return int
 	 */
 	public function getId()
 	{
 		return $this->id;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function setName($name)
+	{
+		$this->name = $name;
 	}
 
 	/**
@@ -73,22 +89,6 @@ class User implements IIdentity
 	public function setPassword($password)
 	{
 		$this->password = Passwords::hash($password);
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return $this->name;
-	}
-
-	/**
-	 * @param string $name
-	 */
-	public function setName($name)
-	{
-		$this->name = $name;
 	}
 
 	/**

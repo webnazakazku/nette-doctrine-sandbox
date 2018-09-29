@@ -5,7 +5,7 @@ namespace App\Model\Security;
 use Nette;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use App\Model\Entities\User;
+use App\Model\User\Entities\User;
 use Nette\Security\AuthenticationException;
 use Nette\Security\IAuthenticator;
 use Nette\Security\Passwords;
@@ -55,6 +55,6 @@ class Authenticator implements IAuthenticator
 			$this->em->flush();
 		}
 
-		return $user;
+		return new Nette\Security\Identity($user->getId(), NULL, ['name' => $user->getName(), 'email' => $user->getEmail()]);
 	}
 }

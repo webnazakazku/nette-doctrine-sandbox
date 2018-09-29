@@ -5,7 +5,7 @@
 
 services:
 	authenticator: App\Model\Security\Authenticator
-	- App\Facades\UserFacade
+	- App\Model\User\Facades\UserFacade
 
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory
@@ -14,4 +14,4 @@ services:
 
 console:
 	commands:
-		- App\Commands\CreateUser
+		- App\Model\User\Commands\AddUser
