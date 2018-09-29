@@ -1,5 +1,5 @@
 {
-	"name": "webnazakazku/nette-sandbox",
+	"name": "webnazakazku/nette-doctrine-sandbox",
 	"description": "The sandbox is a pre-packaged Nette Framework project with Doctrinee extension, basic configured structure for your application.",
 	"homepage": "https://www.webnazakazku.cz",
 	"type": "project",
