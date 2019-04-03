@@ -4,12 +4,37 @@
 #
 
 extensions:
-	# add theese four lines
-	console: Kdyby\Console\DI\ConsoleExtension
-	events: Kdyby\Events\DI\EventsExtension
-	annotations: Kdyby\Annotations\DI\AnnotationsExtension
-	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	# Console
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+	# DBAL
+	dbal: Nettrine\DBAL\DI\DbalExtension
+	dbal.console: Nettrine\DBAL\DI\DbalConsoleExtension
+
+	# ORM
+	orm: Nettrine\ORM\DI\OrmExtension
+#	orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+	orm.console: Nettrine\ORM\DI\OrmConsoleExtension
+	orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+
 	migrations: Nextras\Migrations\Bridges\NetteDI\MigrationsExtension
+
+console:
+    catchExceptions: true
+    autoExit: true
+    lazy: false
+
+orm:
+	# Own em class
+	entityManagerDecoratorClass: App\Model\EntityManagerDecorator
+
+orm.annotations:
+	paths:
+		- App\Model\User
+	ignore: [] # ignored annotations
+
+dbal:
+    debug: true
 
 migrations:
 	dir: %appDir%/migrations # migrations base directory

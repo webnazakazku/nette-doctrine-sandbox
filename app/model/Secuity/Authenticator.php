@@ -1,50 +1,31 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Security;
 
-use Nette;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityRepository;
-use App\Model\User\Entities\User;
-use Nette\Security\AuthenticationException;
-use Nette\Security\IAuthenticator;
+use App\Model\User\Fascades\UserFascade;
 use Nette\Security\Passwords;
+use Nette\Security as NS;
 
-/**
- * Class Authenticator
- *
- * @package App\Model\Security
- */
-class Authenticator implements IAuthenticator
+class Authenticator implements NS\IAuthenticator
 {
 
-	use Nette\SmartObject;
-
-	/** @var EntityManager */
-	private $em;
-
-	/** @var EntityRepository */
-	private $users;
-
 	/**
-	 * @param EntityManager $em
+	 * @var App\Model\User\Fascades\UserFascade
 	 */
-	public function __construct(EntityManager $em)
-	{
-		$this->em = $em;
-		$this->users = $em->getRepository(User::class);
-	}
+	private $userFascade;
 
 	/**
 	 * @param array $credentials
-	 * @return null|User
-	 * @throws AuthenticationException
+	 *
+	 * @return NS\Identity
+	 * @throws NS\AuthenticationException
 	 */
 	public function authenticate(array $credentials)
 	{
 		list($email, $password) = $credentials;
 
-		$user = $this->users->findOneBy(['email' => $email]);
+		$user = $this->userFascade->findOneBy(['email' => $email]);
 
 		if (!$user) {
 			throw new AuthenticationException('Invalid credentials.', self::IDENTITY_NOT_FOUND);

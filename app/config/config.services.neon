@@ -5,13 +5,11 @@
 
 services:
 	authenticator: App\Model\Security\Authenticator
-	- App\Model\User\Facades\UserFacade
+	- App\Model\User\Fascades\UserFascade
 
 	- App\Forms\FormFactory
 	- App\Forms\SignInFormFactory
 
-	router: App\RouterFactory::createRouter
+	- App\Model\User\Commands\AddUser
 
-console:
-	commands:
-		- App\Model\User\Commands\AddUser
+	router: App\RouterFactory::createRouter

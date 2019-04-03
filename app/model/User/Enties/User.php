@@ -7,7 +7,7 @@ use Nette\Security\IIdentity;
 use Nette\Security\Passwords;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Model\User\Repositories\UserRepository")
  * @ORM\Table(name="users")
  */
 class User implements IIdentity

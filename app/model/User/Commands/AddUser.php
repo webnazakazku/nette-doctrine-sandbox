@@ -15,10 +15,10 @@ use Symfony\Component\Console\Question\Question;
 class AddUser extends Command
 {
 
-	/** @var App\Model\User\Facades\UserFacade */
+	/** @var \App\Model\User\Fascades\UserFascade */
 	private $userFascade;
 
-	public function __construct(App\Model\User\Facades\UserFacade $userFascade)
+	public function __construct(\App\Model\User\Fascades\UserFascade $userFascade)
 	{
 		parent::__construct();
 
