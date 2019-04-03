@@ -4,5 +4,4 @@ vendor/*
 !.gitignore
 !.htaccess
 !web.config
-composer.lock
 app/config/config.local.neon
