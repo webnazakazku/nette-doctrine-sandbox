@@ -41,7 +41,7 @@ via a web browser. See [security warning](https://nette.org/security-warning).
 Requirements
 ------------
 
-- Sandbox for Nette 2.4 requires PHP 5.6
+- Sandbox requires PHP 7.1
 
 To check whether server configuration meets the minimum requirements for
 Nette Framework browse to the directory `/checker` in your project root (i.e. `http://localhost:8000/checker`).
@@ -50,19 +50,4 @@ Nette Framework browse to the directory `/checker` in your project root (i.e. `h
 Console
 -------
 
-This sandbox includes Kdyby Console extensionn(https://github.com/Kdyby/Console)
-
-
-Notice: Composer PHP version
-----------------------------
-
-This project forces PHP 5.6 (eventually 7.1) as your PHP version for Composer packages. If you have newer
-version on production server you should change it in `composer.json`:
-
-```json
-"config": {
-	"platform": {
-		"php": "7.2"
-	}
-}
-```
+This sandbox includes Contributte Console extensionn(https://github.com/contributte/console)
