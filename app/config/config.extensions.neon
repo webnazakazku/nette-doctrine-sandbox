@@ -30,7 +30,7 @@ orm:
 
 orm.annotations:
 	paths:
-		- App\Model\User
+		- app/model/User/Entities
 	ignore: [] # ignored annotations
 
 dbal:
@@ -40,7 +40,3 @@ migrations:
 	dir: %appDir%/migrations # migrations base directory
 	driver: mysql   # pgsql or mysql
 	dbal: doctrine  # nextras, nette, doctrine or dibi
-
-decorator:
-	Symfony\Component\Console\Command\Command:
-		tags: [kdyby.console.command]
